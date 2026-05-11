@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookmarkMe</title>
+    <style>
+      :root {
+        color-scheme: dark light;
+        --bg: #0d0f14;
+        --panel: rgba(17, 24, 39, 0.72);
+        --panel-strong: rgba(15, 23, 42, 0.92);
+        --card: rgba(20, 27, 39, 0.86);
+        --card-border: rgba(148, 163, 184, 0.14);
+        --text: #f8fafc;
+        --muted: #94a3b8;
+        --accent: #7dd3fc;
+        --danger: #fda4af;
+        --shadow: 0 24px 60px rgba(2, 6, 23, 0.3);
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f3f5f8;
+          --panel: rgba(255, 255, 255, 0.78);
+          --panel-strong: rgba(255, 255, 255, 0.96);
+          --card: rgba(255, 255, 255, 0.9);
+          --card-border: rgba(15, 23, 42, 0.08);
+          --text: #0f172a;
+          --muted: #475569;
+          --accent: #0284c7;
+          --danger: #e11d48;
+          --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top, rgba(125, 211, 252, 0.14), transparent 34%),
+          linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 82%, black));
+        color: var(--text);
+        font: 400 14px/1.5 Inter, ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .app {
+        padding: 18px;
+      }
+
+      .shell {
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(20px);
+        overflow: hidden;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px 18px 8px;
+      }
+
+      .eyebrow {
+        margin: 0;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .status {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .button {
+        border: 1px solid var(--card-border);
+        background: var(--panel-strong);
+        color: var(--text);
+        border-radius: 12px;
+        padding: 10px 12px;
+        font: inherit;
+        cursor: pointer;
+        transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+        border-color: color-mix(in srgb, var(--accent) 34%, var(--card-border));
+      }
+
+      .content {
+        padding: 8px 18px 18px;
+      }
+
+      .bookmark-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .bookmark-card {
+        padding: 14px;
+        border-radius: 18px;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+      }
+
+      .bookmark-title {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.38;
+      }
+
+      .bookmark-snippet {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .bookmark-meta {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .bookmark-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .button-primary {
+        background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 24%, transparent), transparent),
+          var(--panel-strong);
+      }
+
+      .button-danger {
+        color: var(--danger);
+      }
+
+      .empty {
+        padding: 18px;
+        border-radius: 18px;
+        background: var(--card);
+        border: 1px dashed var(--card-border);
+        color: var(--muted);
+      }
+
+      .empty strong {
+        display: block;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="shell">
+        <header class="header">
+          <p class="eyebrow">BookmarkMe</p>
+          <button id="refreshButton" class="button" type="button">Refresh</button>
+        </header>
+        <div class="content">
+          <p id="status" class="status"></p>
+          <section id="emptyState" class="empty" hidden>
+            <strong>No bookmarks yet</strong>
+            Use Save chat inside ChatGPT and your saved replies will appear here.
+          </section>
+          <section id="bookmarkList" class="bookmark-list"></section>
+        </div>
+      </div>
+    </div>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>
