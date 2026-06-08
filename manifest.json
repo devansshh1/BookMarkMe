@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "BookMarkMe for ChatGPT",
+  "name": "ChatGPT BookMarks",
   "version": "1.0.0",
   "minimum_chrome_version": "116",
-  "description": "Stop getting lost in long chats. Instantly bookmark any prompt or response and jump back to it with one click.",
+  "description": "Do you find yourself endlessly scrolling to find that one specific prompt or code snippet in a massive ChatGPT conversation ? BookMarkMe is there to help .",
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",

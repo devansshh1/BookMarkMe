@@ -1,4 +1,4 @@
-# BookmarkMe for ChatGPT
+# Bookmark for ChatGPT
 
 A Chrome Extension (Manifest V3) that lets you save specific ChatGPT prompt/response pairs and jump back to them later.
 
