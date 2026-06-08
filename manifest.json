@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ChatGPT BookMarks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minimum_chrome_version": "116",
   "description": "Do you find yourself endlessly scrolling to find that one specific prompt or code snippet in a massive ChatGPT conversation ? BookMarkMe is there to help .",
   "icons": {
